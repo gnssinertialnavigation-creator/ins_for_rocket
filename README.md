@@ -1,4 +1,4 @@
-# h2a_fly
+# star_ship_fly
 
 ## Project Structure
 
@@ -9,7 +9,7 @@ project/
 │   ├── imu_gy_10hz.c
 │   ├── kalman_filter.c
 │   ├── kalman_filter_02.c
-│   ├── h2a_main.c
+│   ├── star_ship_main.c
 │   ├── ins_01.c
 │   ├── ins_02.c
 │   ├── ins_03.c
@@ -44,7 +44,7 @@ build.bat
 |------|-------------|
 | `src/*.c` | Source files located in the `src/` folder |
 | `-I inc` | Header files located in the `inc/` folder |
-| `-o h2a_fly.exe` | Output executable name |
+| `-o star_ship_fly.exe` | Output executable name |
 
 ## Requirements
 
