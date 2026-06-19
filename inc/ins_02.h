@@ -12,7 +12,7 @@ extern "C" {
 #include "kalman_filter.h"
 #include "navigation_process_function.h"
 
-#define imu_force_noise_std_02 ( 1e-3 * G_2_N )
+#define imu_force_noise_std_02 ( 1e-2 * G_2_N )
 #define imu_gyro_noise_std_02 ( 1e-2 * DEG_2_RAD )
 #define imu_force_bias_std_02 ( 1e-3 * G_2_N )
 #define imu_gyro_bias_std_02 ( 1e-3 * DEG_2_RAD )
