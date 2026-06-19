@@ -8,12 +8,9 @@ project/
 │   ├── imu_fx_10hz.c
 │   ├── imu_gy_10hz.c
 │   ├── kalman_filter.c
-│   ├── kalman_filter_02.c
 │   ├── star_ship_main.c
 │   ├── ins_01.c
 │   ├── ins_02.c
-│   ├── ins_03.c
-│   ├── ins_04.c
 │   ├── force_gravity.c
 │   ├── matrix_proc.c
 │   └── navigation_process_function.c

@@ -175,14 +175,28 @@ void quaternions_2_matrix( const double q[4], double mat[3][3] )
 int invert3x3( double mat[3][3] )
 {
   double inv[3][3];
-  // Compute the determinant using Laplace expansion
+  // Determinant via Laplace expansion
   double det =
     mat[0][0] * ( mat[1][1] * mat[2][2] - mat[2][1] * mat[1][2] ) -
     mat[0][1] * ( mat[1][0] * mat[2][2] - mat[1][2] * mat[2][0] ) +
     mat[0][2] * ( mat[1][0] * mat[2][1] - mat[1][1] * mat[2][0] );
 
-  // If determinant is zero (or very close to it), the matrix is singular (no inverse)
-  if( fabs( det ) < 1e-9 )
+  int idx, jdx;
+  double s = 0.0;
+  for( idx=0; idx<3; idx++ )
+  {
+    for( jdx=0; jdx<3; jdx++ )
+    {
+      double a = fabs( mat[idx][jdx] );
+      if( a > s )
+        s = a;
+    }
+  }
+  if( s == 0.0 )
+    return 0;
+
+  const double eps = 1e-12;
+  if( fabs( det ) < eps * s * s * s )
     return 0;
 
   double invdet = 1.0 / det;
