@@ -11,7 +11,6 @@ project/
 │   ├── star_ship_main.c
 │   ├── ins_01.c
 │   ├── ins_02.c
-│   ├── force_gravity.c
 │   ├── matrix_proc.c
 │   └── navigation_process_function.c
 ├── inc/
