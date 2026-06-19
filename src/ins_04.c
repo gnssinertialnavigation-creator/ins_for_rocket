@@ -83,7 +83,7 @@ void ins_04( const double time_last, const double p_ecef[3], const double v_ecef
     meas[idx+3] = v_ecef[idx] - vel[idx];
   }
   int n_meas = 6;
-  double f_ecef[3], gy_ecef[3];
+  double f_ecef[3] = {0}, gy_ecef[3] = {0};
   int measured_attitude = 0;
   if( time_last < 0.0 )
   {

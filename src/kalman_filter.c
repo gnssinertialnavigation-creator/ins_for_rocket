@@ -75,7 +75,7 @@ static void kalman_gravity_and_omega_update( int mode_type, double imu_noise_std
   double Q[3][3], CQ[3][3];
   memset( &Q[0][0], 0.0, ( sizeof( double ) * 3 * 3 ) );
   for( idx=0; idx<3; idx++ )
-    Q[idx][idx] = pow( ( imu_noise_std + imu_bias_std ), 2 );
+    Q[idx][idx] = pow( imu_noise_std, 2 ) + pow( imu_bias_std, 2 );
   matrix_product( 3, 3, 3, C_b2e, Q, CQ );
   matrix_product( 3, 3, 3, CQ, C_e2b, Q );
   for( idx=0; idx<3; idx++ )
@@ -138,15 +138,15 @@ void pk_propagator( double Pk[N_KALMAN_STATES][N_KALMAN_STATES],
   double R = sqrt( p_ecef[0] * p_ecef[0] + p_ecef[1] * p_ecef[1] + p_ecef[2] * p_ecef[2] );
   double R_3 = pow( R, 3 ); double R_5 = pow( R, 5 );
   double inv_R_3 = 1.0 / R_3;
-  F[3][0] += dt * GM_EARTH * ( 3.0 * px_2 / R_5 - inv_R_3 ) + OMEGA_EARTH * OMEGA_EARTH;
-  F[3][1] += dt * GM_EARTH * 3.0 * pxy / R_5;
-  F[3][2] += dt * GM_EARTH * 3.0 * pxz / R_5;
-  F[4][0] += dt * GM_EARTH * 3.0 * pxy / R_5;
-  F[4][1] += dt * GM_EARTH * ( 3.0 * py_2 / R_5 - inv_R_3 ) + OMEGA_EARTH * OMEGA_EARTH;
-  F[4][2] += dt * GM_EARTH * 3.0 * pyz / R_5;
-  F[5][0] += dt * GM_EARTH * 3.0 * pxz / R_5;
-  F[5][1] += dt * GM_EARTH * 3.0 * pyz / R_5;
-  F[5][2] += dt * GM_EARTH * ( 3.0 * pz_2 / R_5 - inv_R_3 );
+  F[3][0] += dt * ( GM_EARTH * ( 3.0 * px_2 / R_5 - inv_R_3 ) + OMEGA_EARTH * OMEGA_EARTH );
+  F[3][1] += dt * ( GM_EARTH * 3.0 * pxy / R_5 );
+  F[3][2] += dt * ( GM_EARTH * 3.0 * pxz / R_5 );
+  F[4][0] += dt * ( GM_EARTH * 3.0 * pxy / R_5 );
+  F[4][1] += dt * ( GM_EARTH * ( 3.0 * py_2 / R_5 - inv_R_3 ) + OMEGA_EARTH * OMEGA_EARTH );
+  F[4][2] += dt * ( GM_EARTH * 3.0 * pyz / R_5 );
+  F[5][0] += dt * ( GM_EARTH * 3.0 * pxz / R_5 );
+  F[5][1] += dt * ( GM_EARTH * 3.0 * pyz / R_5 );
+  F[5][2] += dt * ( GM_EARTH * ( 3.0 * pz_2 / R_5 - inv_R_3 ) );
 
   // 2omega
   F[3][4] += dt * ( 2.0 * OMEGA_EARTH );
