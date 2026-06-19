@@ -89,7 +89,7 @@ static void kalman_gravity_and_omega_update( int mode_type, double imu_noise_std
   double Q[3][3], CQ[3][3];
   memset( &Q[0][0], 0.0, ( sizeof( double ) * 3 * 3 ) );
   for( idx=0; idx<3; idx++ )
-    Q[idx][idx] = pow( imu_noise_std, 2 ); + pow( imu_bias_std, 2 );
+    Q[idx][idx] = pow( imu_noise_std, 2 ) + pow( imu_bias_std, 2 );
   matrix_product( 3, 3, 3, C_b2e, Q, CQ );
   matrix_product( 3, 3, 3, CQ, C_e2b, Q );
   for( idx=0; idx<3; idx++ )
