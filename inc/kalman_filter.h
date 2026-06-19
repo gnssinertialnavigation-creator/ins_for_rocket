@@ -24,7 +24,7 @@ int kalman_update( const double time_last, int measured_attitude,
                    const int n_meas, double ins_pos[3], double ins_vel[3],
                    double ins_qb2e[4], double ins_bf[3], double ins_bg[3],
                    double pk[N_KALMAN_STATES][N_KALMAN_STATES],
-                   const double meas[12], const double f_ecef[3],
+                   const double meas[15], const double f_ecef[3],
                    const double gy_ecef[3], double imu_force_noise_std,
                    double imu_gyro_noise_std, double imu_force_bias_std,
                    double imu_gyro_bias_std );
